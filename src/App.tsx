@@ -1,8 +1,14 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery } from '@apollo/client';
+import { batch, useDispatch } from 'react-redux';
 
-import "./App.css";
+import { setPlayers } from './redux/slices/playerSlice';
+import { setMatches } from './redux/slices/matchSlice';
+import Game from './Game';
+import { Match, Player } from './shared/types';
 
-const PLAYERS_QUERY = gql`
+import './App.css';
+
+const PLAYERS_AND_MATCHES_QUERY = gql`
   query {
     players {
       id
@@ -21,22 +27,38 @@ const PLAYERS_QUERY = gql`
         age
       }
     }
+    matches {
+      id
+      players {
+        id
+      }
+      winner {
+        id
+        firstname
+        lastname
+        shortname
+      }
+      startTime
+      endTime
+    }
   }
 `;
 
-interface Player {
-  id: string;
-  shortname: string;
-}
-
-interface PlayersData {
+type AppData = {
   players: Player[];
-}
+  matches: Match[];
+};
 
 const App = () => {
-  const { error, loading, data } = useQuery<PlayersData>(PLAYERS_QUERY);
-
-  const players = data?.players || [];
+  const dispatch = useDispatch();
+  const { error, loading } = useQuery<AppData>(PLAYERS_AND_MATCHES_QUERY, {
+    onCompleted: (data: AppData) => {
+      batch(() => {
+        dispatch(setPlayers(data.players));
+        dispatch(setMatches(data.matches));
+      });
+    },
+  });
 
   return (
     <div className="App">
@@ -49,11 +71,7 @@ const App = () => {
         ) : loading ? (
           <div className="text-white">Loading...</div>
         ) : (
-          <>
-            {players.map(({ id, shortname }) => (
-              <div key={id}>{shortname}</div>
-            ))}
-          </>
+          <Game />
         )}
       </main>
     </div>
