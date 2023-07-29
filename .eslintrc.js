@@ -21,6 +21,8 @@ module.exports = {
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
   rules: {
     // Define your custom ESLint rules here, if needed.
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'off',
   },
   settings: {
     react: {
