@@ -1,4 +1,4 @@
-import Player from "./player";
+import Player from './player';
 
 type Match = {
   id: string;

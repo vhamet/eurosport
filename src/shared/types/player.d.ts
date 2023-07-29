@@ -1,6 +1,6 @@
-import Country from "./country";
-import Picture from "./picture";
-import Stats from "./stats";
+import Country from './country';
+import Picture from './picture';
+import Stats from './stats';
 
 export enum Sex {
   MAN,
