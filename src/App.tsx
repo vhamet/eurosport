@@ -1,12 +1,12 @@
 import { gql, useQuery } from '@apollo/client';
 import { batch, useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 
+import Game from './Game';
 import { setPlayers } from './redux/slices/playerSlice';
 import { setMatches } from './redux/slices/matchSlice';
-import Game from './Game';
 import { Match, Player } from './shared/types';
-
-import './App.css';
+import Header from './components/Header';
 
 const PLAYERS_AND_MATCHES_QUERY = gql`
   query {
@@ -61,17 +61,19 @@ const App = () => {
   });
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="text-3xl font-bold text-blue-800">Eurosport</h1>
-      </header>
-      <main>
+    <div className="App h-screen flex flex-col">
+      <Header />
+      <main className="h-max py-10 px-16 flex-1 bg-gray-300">
         {error ? (
           <div className="text-red-800">Error</div>
         ) : loading ? (
           <div className="text-white">Loading...</div>
         ) : (
-          <Game />
+          <Routes>
+            <Route path="/" element={<Game />} />
+            <Route path="/player/:id" element={<div>TODO player detail</div>} />
+            <Route path="/player" element={<div>TODO players</div>} />
+          </Routes>
         )}
       </main>
     </div>
