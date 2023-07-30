@@ -16,3 +16,10 @@ export const formatWeight = (weight: number): string =>
 
 export const formatHeight = (height: number): string =>
   height ? `${height / 100}M` : '-';
+
+export const getDatesDiff = (date1: Date, date2: Date): number => {
+  const time1 = date1.getTime(),
+    time2 = date2.getTime();
+
+  return date2 > date1 ? time2 - time1 : time1 - time2;
+};
