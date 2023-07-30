@@ -10,3 +10,9 @@ export const getCountryNameFromIOCCode = (IOCcode: string): string => {
 
   return '-';
 };
+
+export const formatWeight = (weight: number): string =>
+  weight ? `${Math.trunc(weight / 1000)}KG` : '-';
+
+export const formatHeight = (height: number): string =>
+  height ? `${height / 100}M` : '-';

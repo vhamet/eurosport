@@ -6,13 +6,15 @@ import PlayerStats from '../PlayerStats';
 
 type PlayerCardProps = {
   player: Player;
-  reverse?: boolean;
+  reversed?: boolean;
 };
 
-const PlayerCard: FC<PlayerCardProps> = ({ player, reverse }) => (
-  <div className={reverse ? 'pl-8 bg-gray-300' : 'pr-8 bg-white'}>
-    <PlayerIdentity player={player} reverse={reverse} />
-    <PlayerStats stats={player.stats} />
+const PlayerCard: FC<PlayerCardProps> = ({ player, reversed }) => (
+  <div
+    className={`max-w-md ${reversed ? 'pl-6 bg-gray-300' : 'pr-6 bg-white'}`}
+  >
+    <PlayerIdentity player={player} reversed={reversed} />
+    <PlayerStats stats={player.stats} reversed={reversed} />
   </div>
 );
 

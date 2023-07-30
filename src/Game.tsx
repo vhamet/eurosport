@@ -9,7 +9,7 @@ const Game = () => {
   return (
     <div className="w-full px-28 flex [&>div]:flex-1">
       {players?.map((player, index) => (
-        <PlayerCard key={player.id} player={player} reverse={index === 1} />
+        <PlayerCard key={player.id} player={player} reversed={index === 1} />
       ))}
     </div>
   );
