@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Match, Player } from '../../shared/types';
-import { getDatesDiff } from '../../shared/utils';
+import { getStringDatesDiff } from '../../shared/utils';
 
 type FaceOffsSummaryProps = {
   players: Player[];
@@ -14,10 +14,7 @@ const FaceOffsSummary: FC<FaceOffsSummaryProps> = ({ players, matches }) => {
   const [firstPlayerWins, secondPlayerWins, totalPlayTime] = matches.reduce(
     (totals, match) => {
       let [firstPlayerWins, secondPlayerWins, totalPlayTime] = totals;
-      totalPlayTime += getDatesDiff(
-        new Date(match.endTime),
-        new Date(match.startTime)
-      );
+      totalPlayTime += getStringDatesDiff(match.endTime, match.startTime);
 
       if (match.winner.id === idFirstPlayer) firstPlayerWins++;
       if (match.winner.id === idSecondPlayer) secondPlayerWins++;

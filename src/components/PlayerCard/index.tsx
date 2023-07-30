@@ -13,7 +13,7 @@ const PlayerCard: FC<PlayerCardProps> = ({ player, reversed }) => (
   <div
     className={`max-w-md ${reversed ? 'pl-6 bg-gray-300' : 'pr-6 bg-white'}`}
   >
-    <PlayerIdentity player={player} reversed={reversed} />
+    <PlayerIdentity player={player} reversed={reversed} withLinkToDetail />
     <PlayerStats stats={player.stats} reversed={reversed} />
   </div>
 );

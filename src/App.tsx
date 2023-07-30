@@ -2,11 +2,12 @@ import { gql, useQuery } from '@apollo/client';
 import { batch, useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
-import Game from './Game';
+import Game from './pages/Game';
+import PlayerVictories from './pages/PlayerVictories';
+import Header from './components/Header';
 import { setPlayers } from './redux/slices/playerSlice';
 import { setMatches } from './redux/slices/matchSlice';
 import { Match, Player } from './shared/types';
-import Header from './components/Header';
 
 const PLAYERS_AND_MATCHES_QUERY = gql`
   query {
@@ -37,12 +38,20 @@ const PLAYERS_AND_MATCHES_QUERY = gql`
       id
       players {
         id
+        firstname
+        lastname
+        country {
+          code
+          picture {
+            url
+          }
+        }
+        picture {
+          url
+        }
       }
       winner {
         id
-        firstname
-        lastname
-        shortname
       }
       startTime
       endTime
@@ -77,8 +86,7 @@ const App = () => {
         ) : (
           <Routes>
             <Route path="/" element={<Game />} />
-            <Route path="/player/:id" element={<div>TODO player detail</div>} />
-            <Route path="/player" element={<div>TODO players</div>} />
+            <Route path="/player/:id" element={<PlayerVictories />} />
           </Routes>
         )}
       </main>

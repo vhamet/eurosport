@@ -1,21 +1,25 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Player } from '../../shared/types';
 import { getCountryNameFromIOCCode } from '../../shared/utils';
 
 type PlayerIdentityProps = {
   player: Player;
+  withLinkToDetail?: boolean;
   reversed?: boolean;
 };
 
 const PlayerIdentity: FC<PlayerIdentityProps> = ({
   player,
+  withLinkToDetail = false,
   reversed = false,
 }) => {
   const { shortname, picture, firstname, lastname, country } = player;
 
-  return (
-    <div className={`flex ${reversed ? ' flex-row-reverse' : ''}`}>
+  const classes = `flex ${reversed ? ' flex-row-reverse' : ''}`;
+  const jsxContent = (
+    <>
       <img
         src={picture.url}
         alt={shortname}
@@ -41,7 +45,15 @@ const PlayerIdentity: FC<PlayerIdentityProps> = ({
           <span>{getCountryNameFromIOCCode(country.code)}</span>
         </div>
       </div>
-    </div>
+    </>
+  );
+
+  return withLinkToDetail ? (
+    <Link to={`/player/${player.id}`} className={classes}>
+      {jsxContent}
+    </Link>
+  ) : (
+    <div className={classes}>{jsxContent}</div>
   );
 };
 

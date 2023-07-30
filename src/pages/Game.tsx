@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 
-import { RootState } from './redux/store';
-import PlayerCard from './components/PlayerCard';
-import FaceOffsSummary from './components/FaceOffsSummary';
+import { RootState } from '../redux/store';
+import PlayerCard from '../components/PlayerCard';
+import FaceOffsSummary from '../components/FaceOffsSummary';
 
 const Game = () => {
   const players = useSelector((state: RootState) => state.players.value);
