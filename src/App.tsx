@@ -18,6 +18,12 @@ const PLAYERS_AND_MATCHES_QUERY = gql`
       sex
       country {
         code
+        picture {
+          url
+        }
+      }
+      picture {
+        url
       }
       stats {
         rank
@@ -63,7 +69,7 @@ const App = () => {
   return (
     <div className="App h-screen flex flex-col">
       <Header />
-      <main className="h-max py-10 px-16 flex-1 bg-gray-300">
+      <main className="h-max py-10 px-16 flex-1 bg-gray-100">
         {error ? (
           <div className="text-red-800">Error</div>
         ) : loading ? (
