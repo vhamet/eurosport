@@ -25,13 +25,13 @@ const FaceOffsSummary: FC<FaceOffsSummaryProps> = ({ players, matches }) => {
   );
 
   return (
-    <div className="py-3 px-16 flex justify-around bg-white">
+    <div className="py-3 px-5 sm:px-16 flex justify-between sm:justify-around bg-white">
       <div className="flex flex-col items-center">
         <span className="text-2xl font-bold">{firstPlayerWins}</span>
         <span className="text-xs">WINS</span>
       </div>
-      <div className="w-3/6 flex flex-col items-center">
-        <span className="mb-2 text-xs">
+      <div className="w-full sm:w-3/6 px-5 sm:px-0 flex flex-col items-center">
+        <span className="mb-2 text-xxs sm:text-xs">
           {matches.length} GAME{matches.length > 1 ? 'S' : ''} -{' '}
           {(totalPlayTime / 3600000).toFixed(2)} HOURS PLAYED
         </span>

@@ -78,7 +78,7 @@ const App = () => {
   return (
     <div className="App h-screen flex flex-col">
       <Header />
-      <main className="h-max py-10 px-16 flex-1 bg-gray-100">
+      <main className="h-max py-10 px-3 sm:px-16 flex-1 bg-gray-100">
         {error ? (
           <div className="text-red-800">Error</div>
         ) : loading ? (

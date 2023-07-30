@@ -22,8 +22,10 @@ const MatchSummary: FC<MatchSummaryProps> = ({ match, player }) => {
   const day = formatDate(new Date(match.startTime));
 
   return (
-    <div className="p-5 bg-white">
-      <div className="mb-1 text-xs italic text-gray-900">{day}</div>
+    <div className="p-2 sm:p-5 bg-white">
+      <div className="mb-1 text-xxs sm:text-xs italic text-gray-900 truncate">
+        {day}
+      </div>
       <div className="flex items-baseline">
         {match.winner.id === player.id ? (
           <span className="font-bold text-green-700">WIN</span>
@@ -39,7 +41,7 @@ const MatchSummary: FC<MatchSummaryProps> = ({ match, player }) => {
             alt={opponent.country.code}
           />
         </span>
-        <span className="ml-2 text-sm">
+        <span className="ml-2 text-xs sm:text-sm">
           - GAME TIME:{' '}
           <span className="font-bold">
             {hours}:{minutes}

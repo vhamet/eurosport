@@ -30,12 +30,16 @@ const PlayerIdentity: FC<PlayerIdentityProps> = ({
           reversed ? ' items-end' : ''
         }`}
       >
-        <span className="font-bold text-lg leading-6">{firstname}</span>
-        <span className="font-bold text-lg leading-6">{lastname}</span>
+        <span className="text-xs sm:text-lg leading-6 font-bold">
+          {firstname}
+        </span>
+        <span className="text-xs sm:text-lg leading-6 font-bold">
+          {lastname}
+        </span>
         <div
           className={`mt-2 flex${
             reversed ? ' flex-row-reverse' : ''
-          } items-center text-xs`}
+          } items-center text-xxs sm:text-xs`}
         >
           <img
             src={country.picture.url}
