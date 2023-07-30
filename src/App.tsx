@@ -8,6 +8,7 @@ import Header from './components/Header';
 import { setPlayers } from './redux/slices/playerSlice';
 import { setMatches } from './redux/slices/matchSlice';
 import { Match, Player } from './shared/types';
+import { ReactComponent as Loader } from './img/loader.svg';
 
 const PLAYERS_AND_MATCHES_QUERY = gql`
   query {
@@ -82,7 +83,13 @@ const App = () => {
         {error ? (
           <div className="text-red-800">Error</div>
         ) : loading ? (
-          <div className="text-white">Loading...</div>
+          <div className="flex flex-col justify-center items-center text-xl">
+            Loading...
+            <div role="status" className="mt-2">
+              <Loader />
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
         ) : (
           <Routes>
             <Route path="/" element={<Game />} />
