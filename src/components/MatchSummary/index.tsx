@@ -22,7 +22,7 @@ const MatchSummary: FC<MatchSummaryProps> = ({ match, player }) => {
   const day = formatDate(new Date(match.startTime));
 
   return (
-    <div className="p-2 sm:p-5 bg-white">
+    <div className="p-2 sm:p-5 bg-white" data-testid="match-summary">
       <div className="mb-1 text-xxs sm:text-xs italic text-gray-900 truncate">
         {day}
       </div>

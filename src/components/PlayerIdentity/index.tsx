@@ -53,11 +53,17 @@ const PlayerIdentity: FC<PlayerIdentityProps> = ({
   );
 
   return withLinkToDetail ? (
-    <Link to={`/player/${player.id}`} className={classes}>
+    <Link
+      to={`/player/${player.id}`}
+      className={classes}
+      data-test-id="player-identity"
+    >
       {jsxContent}
     </Link>
   ) : (
-    <div className={classes}>{jsxContent}</div>
+    <div className={classes} data-testid="player-identity">
+      {jsxContent}
+    </div>
   );
 };
 

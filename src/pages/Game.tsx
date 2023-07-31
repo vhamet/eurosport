@@ -10,7 +10,10 @@ const Game = () => {
 
   return (
     <div className="w-full px-0 lg:px-28 flex flex-col">
-      <h1 className="mb-5 text-2xl font-bold text-gray-700">
+      <h1
+        className="mb-5 text-2xl font-bold text-gray-700"
+        data-testid="po-title"
+      >
         PLAYERS OVERVIEW
       </h1>
       <div className="flex [&>div]:flex-1">

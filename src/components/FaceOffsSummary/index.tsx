@@ -25,7 +25,10 @@ const FaceOffsSummary: FC<FaceOffsSummaryProps> = ({ players, matches }) => {
   );
 
   return (
-    <div className="py-3 px-5 sm:px-16 flex justify-between sm:justify-around bg-white">
+    <div
+      className="py-3 px-5 sm:px-16 flex justify-between sm:justify-around bg-white"
+      data-testid="faceoffs-summary"
+    >
       <div className="flex flex-col items-center">
         <span className="text-2xl font-bold">{firstPlayerWins}</span>
         <span className="text-xs">WINS</span>

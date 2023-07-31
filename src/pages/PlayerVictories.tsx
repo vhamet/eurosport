@@ -28,11 +28,17 @@ const PlayerVictories = () => {
 
   return (
     <div className="px-2 lg:px-36">
-      <h1 className="mb-5 text-2xl font-bold text-gray-700">
+      <h1
+        className="mb-5 text-2xl font-bold text-gray-700"
+        data-testid="pv-title"
+      >
         PLAYER VICTORIES
       </h1>
       <PlayerIdentity player={player} />
-      <div className="w-full mt-5 inline-block font-bold text-center">
+      <div
+        className="w-full mt-5 inline-block font-bold text-center"
+        data-testid="victories-ratio"
+      >
         {victories.length} victories / {matches.length - victories.length}{' '}
         losses
       </div>
