@@ -1,11 +1,7 @@
 import Country from './country';
 import Picture from './picture';
 import Stats from './stats';
-
-export enum Sex {
-  MAN,
-  WOMAN,
-}
+import { Sex } from './enums';
 
 type Player = {
   id: string;

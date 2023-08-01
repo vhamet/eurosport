@@ -56,7 +56,7 @@ const PlayerIdentity: FC<PlayerIdentityProps> = ({
     <Link
       to={`/player/${player.id}`}
       className={classes}
-      data-test-id="player-identity"
+      data-testid="player-identity"
     >
       {jsxContent}
     </Link>
