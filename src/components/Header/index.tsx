@@ -7,12 +7,8 @@ const Header = () => (
     className="h-16 px-16 flex justify-center md:justify-start border-b border-b-blue-800"
     data-testid="app-header"
   >
-    <Link
-      to="/"
-      className="h-16 w-36 pr-4 flex items-center"
-      data-testid="app-logo"
-    >
-      <Logo />
+    <Link to="/" className="h-16 w-36 pr-4 flex items-center">
+      <Logo data-testid="app-logo" />
     </Link>
   </header>
 );
