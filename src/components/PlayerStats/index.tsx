@@ -13,6 +13,7 @@ const PlayerStats: FC<PlayerStatsProps> = ({ stats, reversed }) => (
     className={`${
       reversed ? 'pr-2 sm:pr-6' : 'pl-2 sm:pl-6'
     } py-3 text-xxs sm:text-xs`}
+    data-testid="player-stats"
   >
     <div className="pb-1 flex flex-col sm:flex-row justify-between border-b border-b-gray-400 border-opacity-30">
       <div className="flex justify-between" data-testid="ps-ranking">
