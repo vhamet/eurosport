@@ -1,18 +1,14 @@
 import PlayerStats from './index';
-import { Stats } from '../../shared/types';
 import { formatHeight, formatWeight } from '../../shared/utils';
-
-const stats: Stats = {
-  rank: 21,
-  points: 1784,
-  weight: 81000,
-  height: 183,
-  age: 33,
-};
+import { Stats } from '../../shared/types';
 
 describe('<PlayerStats />', () => {
+  let stats: Stats;
   beforeEach(() => {
-    cy.mount(<PlayerStats stats={stats} />);
+    cy.fixture('players').then(({ players }) => {
+      stats = players[0].stats;
+      cy.mount(<PlayerStats stats={stats} />);
+    });
   });
 
   it("shows the player's ATP ranking", () => {
