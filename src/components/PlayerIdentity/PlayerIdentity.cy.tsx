@@ -5,7 +5,7 @@ import { getCountryNameFromIOCCode } from '../../shared/utils';
 describe('<PlayerIdentity />', () => {
   let player: Player;
   beforeEach(() => {
-    cy.fixture('players').then(({ players }) => {
+    cy.fixture<{ players: Player[] }>('data').then(({ players }) => {
       [player] = players;
       cy.mount(<PlayerIdentity player={player} />);
     });
@@ -43,7 +43,7 @@ describe('<PlayerIdentity />', () => {
 describe('<PlayerIdentity withLinkToDetail />', () => {
   let player: Player;
   it("is a link to the player's detail when prop withLinkToDetail is true", () => {
-    cy.fixture('players').then(({ players }) => {
+    cy.fixture<{ players: Player[] }>('data').then(({ players }) => {
       [player] = players;
       cy.mount(<PlayerIdentity player={player} withLinkToDetail />);
       cy.get('[data-testid="player-identity"]').should(

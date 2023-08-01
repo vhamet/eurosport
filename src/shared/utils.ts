@@ -30,3 +30,16 @@ export const getStringDatesDiff = (date1: string, date2: string): number =>
 export const formatDate = (date: Date): string => {
   return DateTime.fromJSDate(date).toFormat('ffff');
 };
+
+export const computeGameTime = (
+  start: string,
+  end: string
+): { hours: string; minutes: string } => {
+  const time = getStringDatesDiff(end, start);
+  const hours = Math.trunc(time / 3600000)
+    .toString()
+    .padStart(2, '0');
+  const minutes = ((time % 3600000) / 60000).toString().padStart(2, '0');
+
+  return { hours, minutes };
+};

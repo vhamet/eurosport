@@ -1,11 +1,11 @@
 import PlayerStats from './index';
 import { formatHeight, formatWeight } from '../../shared/utils';
-import { Stats } from '../../shared/types';
+import { Player, Stats } from '../../shared/types';
 
 describe('<PlayerStats />', () => {
   let stats: Stats;
   beforeEach(() => {
-    cy.fixture('players').then(({ players }) => {
+    cy.fixture<{ players: Player[] }>('data').then(({ players }) => {
       stats = players[0].stats;
       cy.mount(<PlayerStats stats={stats} />);
     });

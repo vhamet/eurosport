@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Match, Player } from '../../shared/types';
-import { formatDate, getStringDatesDiff } from '../../shared/utils';
+import { computeGameTime, formatDate } from '../../shared/utils';
 
 type MatchSummaryProps = {
   match: Match;
@@ -10,15 +10,8 @@ type MatchSummaryProps = {
 
 const MatchSummary: FC<MatchSummaryProps> = ({ match, player }) => {
   const opponent = match.players.find(({ id }) => id !== player.id);
-  if (!opponent) {
-    return <div></div>;
-  }
 
-  const time = getStringDatesDiff(match.endTime, match.startTime);
-  const hours = Math.trunc(time / 3600000)
-    .toString()
-    .padStart(2, '0');
-  const minutes = ((time % 3600000) / 60000).toString().padStart(2, '0');
+  const { hours, minutes } = computeGameTime(match.startTime, match.endTime);
   const day = formatDate(new Date(match.startTime));
 
   return (
@@ -34,11 +27,11 @@ const MatchSummary: FC<MatchSummaryProps> = ({ match, player }) => {
         )}
         <span className="mx-1 text-xs">vs</span>
         <span className="flex items-center font-bold">
-          {opponent.firstname} {opponent.lastname}
+          {opponent?.firstname ?? '-'} {opponent?.lastname ?? '-'}
           <img
             className="h-3.5 w-[25px] ml-1"
-            src={opponent.country.picture.url}
-            alt={opponent.country.code}
+            src={opponent?.country.picture.url ?? '-'}
+            alt={opponent?.country.code ?? '-'}
           />
         </span>
         <span className="ml-2 text-xs sm:text-sm">

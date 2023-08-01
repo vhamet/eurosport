@@ -4,7 +4,7 @@ import { Player } from '../../shared/types';
 describe('<PlayerCard />', () => {
   let player: Player;
   beforeEach(() => {
-    cy.fixture('players').then(({ players }) => {
+    cy.fixture<{ players: Player[] }>('data').then(({ players }) => {
       [player] = players;
       cy.mount(<PlayerCard player={player} />);
     });
