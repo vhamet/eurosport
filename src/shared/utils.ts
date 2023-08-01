@@ -43,3 +43,6 @@ export const computeGameTime = (
 
   return { hours, minutes };
 };
+
+export const formatHoursPlayed = (totalPlayTime: number): string =>
+  (totalPlayTime / 3600000).toFixed(2);

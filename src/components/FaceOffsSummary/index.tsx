@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Match, Player } from '../../shared/types';
-import { getStringDatesDiff } from '../../shared/utils';
+import { formatHoursPlayed, getStringDatesDiff } from '../../shared/utils';
 
 type FaceOffsSummaryProps = {
   players: Player[];
@@ -30,13 +30,15 @@ const FaceOffsSummary: FC<FaceOffsSummaryProps> = ({ players, matches }) => {
       data-testid="faceoffs-summary"
     >
       <div className="flex flex-col items-center">
-        <span className="text-2xl font-bold">{firstPlayerWins}</span>
+        <span className="text-2xl font-bold" data-testid="fs-wins1">
+          {firstPlayerWins}
+        </span>
         <span className="text-xs">WINS</span>
       </div>
       <div className="w-full sm:w-3/6 px-5 sm:px-0 flex flex-col items-center">
         <span className="mb-2 text-xxs sm:text-xs">
           {matches.length} GAME{matches.length > 1 ? 'S' : ''} -{' '}
-          {(totalPlayTime / 3600000).toFixed(2)} HOURS PLAYED
+          {formatHoursPlayed(totalPlayTime)} HOURS PLAYED
         </span>
         <div className="w-full flex">
           <div
@@ -60,7 +62,9 @@ const FaceOffsSummary: FC<FaceOffsSummaryProps> = ({ players, matches }) => {
         </div>
       </div>
       <div className="flex flex-col items-center">
-        <span className="text-2xl font-bold">{secondPlayerWins}</span>
+        <span className="text-2xl font-bold" data-testid="fs-wins2">
+          {secondPlayerWins}
+        </span>
         <span className="text-xs">WINS</span>
       </div>
     </div>
