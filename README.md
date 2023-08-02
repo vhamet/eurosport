@@ -1,14 +1,13 @@
 # Eurosport unattended test
-
 Technical test for Eurosport : fetch data from a GraphQL API and display it in a react application.
+
 
 ## Available Scripts
 
 In the project directory, you can run:
-
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode (run `npm install` once before).\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.
