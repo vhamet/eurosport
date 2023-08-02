@@ -14,7 +14,7 @@ const FaceOffsSummary: FC<FaceOffsSummaryProps> = ({ players, matches }) => {
   const [firstPlayerWins, secondPlayerWins, totalPlayTime] = matches.reduce(
     (totals, match) => {
       let [firstPlayerWins, secondPlayerWins, totalPlayTime] = totals;
-      totalPlayTime += getStringDatesDiff(match.endTime, match.startTime);
+      totalPlayTime += getStringDatesDiff(match.endTime, match.startTime) || 0;
 
       if (match.winner.id === idFirstPlayer) firstPlayerWins++;
       if (match.winner.id === idSecondPlayer) secondPlayerWins++;

@@ -41,7 +41,7 @@ describe('<FaceOffsSummary />', () => {
       formatHoursPlayed(
         matches.reduce(
           (time, { startTime, endTime }) =>
-            time + getStringDatesDiff(startTime, endTime),
+            time + (getStringDatesDiff(startTime, endTime) || 0),
           0
         )
       )
